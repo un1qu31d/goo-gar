@@ -22,7 +22,7 @@ $(function() {
 
 $(window).on( "load", function() {
   const side = measurements.hypotenuse / 2;
-  $('.services .service').css({width: `${side - 96}px`, height: `${side - 96}px`});
+  $('.services .service').css({width: `${side}px`, height: `${side}px`});
   if (measurements.width < measurements.height) {
     $('.services .service:nth-child(1), .services .service:nth-child(4)').css({height: `${side + 96}px`});
   } else {
