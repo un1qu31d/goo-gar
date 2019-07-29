@@ -27,6 +27,21 @@ a {
 
 @keyframes logo {
   to {
+    width: calc(100vw - 32px);
+  }
+}
+@keyframes logoLTR {
+  to {
+    transform: translate(32px);
+  }
+}
+@keyframes logoRTL {
+  to {
+    transform: translate(-32px);
+  }
+}
+@keyframes logoObject {
+  to {
     top: calc(50% - 48px);
     transform: scale(1);
   }
@@ -35,16 +50,18 @@ a {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  transition: transform 600ms 2400ms ease-out, width 600ms 2400ms ease-out;
 }
 .intro.animation--start .logo {
-  width: calc(100vw - 32px);
+  animation-duration: 600ms;
+  animation-delay: 2400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 [dir="ltr"] .intro.animation--start .logo {
-  transform: translate(32px);
+  animation-name: logo, logoLTR;
 }
 [dir="rtl"] .intro.animation--start .logo {
-  transform: translate(-32px);
+  animation-name: logo, logoRTL;
 }
   .logo object {
     position: absolute;
@@ -54,12 +71,17 @@ a {
     width: 96px;
     height: 96px;
     transform: scale(0);
-    animation-name: logo;
+    animation-name: logoObject;
     animation-duration: 600ms;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
   }
 
+@keyframes social {
+  to {
+    transform: translate(0);
+  }
+}
 .social {
   position: fixed;
   top: 0;
@@ -67,7 +89,6 @@ a {
   width: 32px;
   z-index: 1;
   background-color: #000;
-  transition: transform 600ms 2400ms ease-out;
   display: grid;
   align-content: center;
 }
@@ -78,7 +99,11 @@ a {
   transform: translateX(32px);
 }
 .intro.animation--start .social {
-  transform: translateX(0);
+  animation-name: social;
+  animation-duration: 600ms;
+  animation-delay: 2400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
   .social ul {
     display: grid;
