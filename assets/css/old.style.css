@@ -1,3 +1,305 @@
+body, ul {
+  margin: 0;
+}
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+[lang="en"] body {
+  font-family: 'Roboto', sans-serif;
+}
+[lang="ar"] body {
+  font-family: 'Cairo', sans-serif;
+}
+
+.intro {
+  overflow: hidden;
+  background-image: linear-gradient(to top, #4A148C, #250A46);
+}
+
+@keyframes logo {
+  to {
+    width: calc(100vw - 32px);
+  }
+}
+@keyframes logoLTR {
+  to {
+    transform: translate(32px);
+  }
+}
+@keyframes logoRTL {
+  to {
+    transform: translate(-32px);
+  }
+}
+@keyframes logoObject {
+  to {
+    top: calc(50% - 48px);
+    transform: scale(1);
+  }
+}
+.logo {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+.intro.animation--start .logo {
+  animation-duration: 600ms;
+  animation-delay: 2400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+[dir="ltr"] .intro.animation--start .logo {
+  animation-name: logo, logoLTR;
+}
+[dir="rtl"] .intro.animation--start .logo {
+  animation-name: logo, logoRTL;
+}
+  .logo object {
+    position: absolute;
+    top: -96px;
+    right: calc(50% - 48px);
+    left: calc(50% - 48px);
+    width: 96px;
+    height: 96px;
+    transform: scale(0);
+    animation-name: logoObject;
+    animation-duration: 600ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+@keyframes social {
+  to {
+    transform: translate(0);
+  }
+}
+.social {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  z-index: 1;
+  background-color: #000;
+  display: grid;
+  align-content: center;
+}
+[dir="ltr"] .social {
+  transform: translateX(-32px);
+}
+[dir="rtl"] .social {
+  transform: translateX(32px);
+}
+.intro.animation--start .social {
+  animation-name: social;
+  animation-duration: 600ms;
+  animation-delay: 2400ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+  .social ul {
+    display: grid;
+    padding: 0 8px;
+  }
+    .social li {
+      transition: transform 600ms ease-out;
+    }
+    [dir="ltr"] .social li {
+      transform: translateX(-32px);
+    }
+    [dir="rtl"] .social li {
+      transform: translateX(32px);
+    }
+    .intro.animation--start .social li {
+      transform: translateX(0);
+    }
+      .social a {
+        display: grid;
+        grid-template-columns: 16px 1fr;
+        grid-gap: 8px;
+        align-items: center;
+        width: 16px;
+        overflow: hidden;
+        transition: transform 200ms ease-out, width 200ms ease-out;
+      }
+      .social li:hover a {
+        width: 100%;
+      }
+      [dir="ltr"] .social li:hover a {
+        transform: translateX(-4px);
+      }
+      [dir="rtl"] .social li:hover a {
+        transform: translateX(4px);
+      }
+        .social img {
+          display: block;
+          width: 100%;
+        }
+        .social span {
+          padding: 4px 16px;
+          color: #ffffffaa;
+          text-transform: uppercase;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+/* .services {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  transition: transform 600ms 2400ms ease-out, width 600ms 2400ms ease-out;
+}
+.intro.animation--start .services {
+  width: calc(100vw - 32px);
+}
+[dir="ltr"] .intro.animation--start .services {
+  transform: translate(32px);
+}
+[dir="rtl"] .intro.animation--start .services {
+  transform: translate(-32px);
+}
+  .service {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    transition: transform 1600ms ease-out;
+    overflow: hidden;
+  }
+  .service:nth-child(1), .service:nth-child(3) {
+    right: 50%;
+  }
+  .service:nth-child(2), .service:nth-child(4) {
+    left: 50%;
+  }
+  .service:nth-child(1), .service:nth-child(2) {
+    bottom: 50%;
+  }
+  .service:nth-child(3), .service:nth-child(4) {
+    top: 50%;
+  }
+  .service:nth-child(1) {
+    transition-delay: 100ms;
+    transform-origin: 100% 100%;
+    transform: rotateZ(45deg)  translateX(-100%) translateY(-100%);
+  }
+  .service:nth-child(2) {
+    transition-delay: 200ms;
+    transform-origin: 0% 100%;
+    transform: rotateZ(45deg)  translateX(100%) translateY(-100%);
+  }
+  .service:nth-child(3) {
+    transition-delay: 300ms;
+    transform-origin: 100% 0%;
+    transform: rotateZ(45deg)  translateX(-100%) translateY(100%);
+  }
+  .service:nth-child(4) {
+    transition-delay: 400ms;
+    transform-origin: 0% 0%;
+    transform: rotateZ(45deg)  translateX(100%) translateY(100%);
+  }
+  .intro.animation--start .services .service:nth-child(1) {
+    transform: rotateZ(45deg) translateX(-96px) translateY(96px);
+  }
+  .intro.animation--start .services .service:nth-child(2) {
+    transform: rotateZ(45deg) translateX(-96px) translateY(-96px);
+  }
+  .intro.animation--start .services .service:nth-child(3) {
+    transform: rotateZ(45deg) translateX(96px) translateY(96px);
+  }
+  .intro.animation--start .services .service:nth-child(4) {
+    transform: rotateZ(45deg) translateX(96px) translateY(-96px);
+  }
+    .service__image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: rotateZ(-45deg);
+    }
+    .service:nth-child(1) .service__image {
+      transform-origin: 100% 100%;
+    }
+    .service:nth-child(2) .service__image {
+      transform-origin: 0% 100%;
+    }
+    .service:nth-child(3) .service__image {
+      transform-origin: 100% 0%;
+    }
+    .service:nth-child(4) .service__image {
+      transform-origin: 0% 0%;
+    }
+    .service__image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 1600ms ease-out;
+      z-index: 1;
+      background-color: #00000088;
+    }
+    .service:nth-child(1) .service__image::before {
+      transition-delay: 1400ms;
+      transform: rotateZ(45deg) translateX(-100%) translateY(-100%);
+    }
+    .service:nth-child(2) .service__image::before {
+      transition-delay: 1300ms;
+      transform: rotateZ(45deg) translateX(100%) translateY(100%);
+    }
+    .service:nth-child(3) .service__image::before {
+      transition-delay: 1200ms;
+      transform: rotateZ(45deg) translateX(-100%) translateY(-100%);
+    }
+    .service:nth-child(4) .service__image::before {
+      transition-delay: 1100ms;
+      transform: rotateZ(45deg) translateX(100%) translateY(-100%);
+    }
+    .intro.animation--start .services .service:nth-child(1) .service__image::before {
+      transform: rotateZ(45deg) translateX(100%) translateY(0%);
+    }
+    .intro.animation--start .services .service:nth-child(2) .service__image::before {
+      transform: rotateZ(45deg);
+    }
+    .intro.animation--start .services .service:nth-child(3) .service__image::before {
+      transform: rotateZ(45deg);
+    }
+    .intro.animation--start .services .service:nth-child(4) .service__image::before {
+      transform: rotateZ(45deg);
+    }
+      .service__image img {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        filter: grayscale(0%);
+      }
+      .intro.animation--start .services .service:nth-child(1) .service__image img, .intro.animation--start .services .service:nth-child(4) .service__image img {
+        width: 200%;
+      }
+      .intro.animation--start .services .service:nth-child(2) .service__image img, .intro.animation--start .services .service:nth-child(3) .service__image img {
+        height: 200%;
+      }
+      .intro.animation--start .services .service:nth-child(3) .service__image img {
+        transform: translateY(-50%);
+      }
+      [dir="rtl"] .intro.animation--start .services .service:nth-child(1) .service__image img {
+        transform: translateX(50%);
+      }
+      [dir="ltr"] .intro.animation--start .services .service:nth-child(4) .service__image img {
+        transform: translateX(-50%);
+      } */
+
 :root {
   /* --line: 32px;
   --sqrt: 45.25483399593904156165403917471px; */
@@ -15,7 +317,6 @@
   transform: translateX(-50%) translateY(-50%);
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
 }
   .service {
