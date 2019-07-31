@@ -54,7 +54,7 @@
     left: calc(50% - (var(--line) / 2));
     width: var(--line);
     height: var(--line);
-    transform: scale(1);
+    transform: scale(0);
   }
 @keyframes logo {
   0% {
